@@ -18,23 +18,17 @@ public class VendingMachine {
         File fileName = new File("catering.csv");
         List<Item> itemList = new ArrayList<>();
         readFile(fileName, itemList);
-        for (int i = 0; i < itemList.size(); i++) {
-            if (i == 1){
-                Item currentItem = itemList.get(i);
-                currentItem.setQuantity();
-            }
-            System.out.println(itemList.get(i));
-
-        }
+        BigDecimal currentMoney = new BigDecimal(0.00);
+        BigDecimal moneyFed = new BigDecimal(0.00);
         while(true) {
             UserOutput.displayHomeScreen();
             String choice = UserInput.getHomeScreenOption();
             System.out.println(choice);
             if(choice.equals("display")) {
-                // display the items
+                UserOutput.displayItems(itemList);
             }
             else if(choice.equals("purchase")) {
-                // make a purchase
+                UserInput.getPurchaseScreenOption(currentMoney);
             }
             else if(choice.equals("exit")) {
                 // good bye
@@ -62,4 +56,14 @@ public class VendingMachine {
         return itemList;
 
     }
+
+//    public BigDecimal feedMoney(BigDecimal currentMoney, BigDecimal moneyFed){
+//        if(moneyFed.equals(1) || moneyFed.equals(5) || moneyFed.equals(10) || moneyFed.equals(20)){
+//            currentMoney = currentMoney.add(moneyFed);
+//            return currentMoney;
+//        } else {
+//            System.out.println("Invalid bill type!");
+//            return currentMoney;
+//        }
+//    }
 }
