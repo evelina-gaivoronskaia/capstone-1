@@ -1,6 +1,7 @@
 package com.techelevator.application;
 
 import com.techelevator.Item;
+import com.techelevator.Money;
 import com.techelevator.ui.UserInput;
 import com.techelevator.ui.UserOutput;
 
@@ -15,6 +16,7 @@ import java.util.Scanner;
 public class VendingMachine {
     static Scanner fileScanner;
     public void run() {
+        Money money = new Money();
         File fileName = new File("catering.csv");
         List<Item> itemList = new ArrayList<>();
         readFile(fileName, itemList);
@@ -28,7 +30,19 @@ public class VendingMachine {
                 UserOutput.displayItems(itemList);
             }
             else if(choice.equals("purchase")) {
-                UserInput.getPurchaseScreenOption(currentMoney);
+                while(true) {
+                    String purchaseChoice = UserInput.getPurchaseScreenOption(currentMoney);
+                    if (purchaseChoice.equals("money")) {
+                        currentMoney = money.feedMoney(money.getCurrentMoney());
+                    }else if(purchaseChoice.equals("select")){
+
+                    }else if (purchaseChoice.equals("finish")){
+                        break;
+
+                    }else {
+                        System.out.println("Not a choice.");
+                    }
+                }
             }
             else if(choice.equals("exit")) {
                 // good bye

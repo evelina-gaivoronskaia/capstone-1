@@ -62,16 +62,15 @@ public class UserInput {
            String option = selectedOption.trim().toLowerCase();
            System.out.println("option = " + option);
            if (option.equals("m")) {
-               Money.feedMoney(BigDecimal currentMoney, BigDecimal moneyFed);
+               return "money";
            } else if (option.equals("s")) {
                return "select";
            } else if (option.equals("f")) {
-               break;
+               return "finish";
            } else {
                return "";
            }
        }
-       return "";
     }
 }
 
