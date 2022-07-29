@@ -49,24 +49,25 @@ public class Money {
     public String getChange(Money currentMoney, Logger audit){
         BigDecimal totalMoney = this.currentMoney;
         int dollarBills = totalMoney.intValue();
-        double remainder = totalMoney.doubleValue() - dollarBills;
-        int remainderNew = (int)(remainder * 100);
-        int quarterValue = 25;
-        int dimeValue = 10;
-        int nickleValue = 5;
+//        double remainder = totalMoney.doubleValue() - dollarBills;
+        totalMoney = totalMoney.subtract(new BigDecimal(dollarBills));
+//        int remainderNew = (int)(remainder * 100);
+//        int quarterValue = 25;
+//        int dimeValue = 10;
+//        int nickleValue = 5;
         int quater= 0 ;
         int dime= 0 ;
         int nickle = 0;
-        while(remainderNew > 0){
-            if(remainderNew >= quarterValue){
+        while(totalMoney.compareTo(BigDecimal.ZERO) > 0){
+            if(totalMoney.compareTo(new BigDecimal("0.25")) >= 0){
                 quater++;
-                remainderNew -= quarterValue;
-            }else if(remainderNew >= dimeValue){
+                totalMoney = totalMoney.subtract(new BigDecimal("0.25"));
+            }else if(totalMoney.compareTo(new BigDecimal("0.10")) >= 0){
                 dime++;
-                remainderNew -= dimeValue;
-            }else if (remainderNew >= nickleValue) {
+               totalMoney = totalMoney.subtract(new BigDecimal("0.10"));
+            }else if (totalMoney.compareTo(new BigDecimal("0.05")) >= 0) {
                 nickle++;
-                remainderNew -= nickleValue;
+                totalMoney = totalMoney.subtract(new BigDecimal("0.05"));
             }
         }
 //        if(!(totalMoney.doubleValue() % 1 == 0)) {
