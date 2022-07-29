@@ -1,6 +1,7 @@
 package com.techelevator.application;
 
 import com.techelevator.Item;
+import com.techelevator.Logger;
 import com.techelevator.Money;
 import com.techelevator.ui.UserInput;
 import com.techelevator.ui.UserOutput;
@@ -22,6 +23,7 @@ public class VendingMachine {
         readFile(fileName, itemList);
         BigDecimal currentMoney = new BigDecimal(0.00);
         BigDecimal moneyFed = new BigDecimal(0.00);
+        Logger audit = new Logger("Audit.txt");
         while(true) {
             UserOutput.displayHomeScreen();
             String choice = UserInput.getHomeScreenOption();
@@ -33,9 +35,9 @@ public class VendingMachine {
                 while(true) {
                     String purchaseChoice = UserInput.getPurchaseScreenOption(money);
                     if (purchaseChoice.equals("money")) {
-                        currentMoney = money.feedMoney(money.getCurrentMoney());
+                        currentMoney = money.feedMoney(money, audit);
                     }else if(purchaseChoice.equals("select")){
-                        UserOutput.purchaseItems(itemList, money);
+                        UserOutput.purchaseItems(itemList, money, audit);
                     }else if (purchaseChoice.equals("finish")){
                         break;
 
@@ -46,6 +48,7 @@ public class VendingMachine {
             }
             else if(choice.equals("exit")) {
                 // good bye
+                System.out.println(money.getChange(money, audit));
                 break;
             }
         }

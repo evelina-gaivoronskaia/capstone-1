@@ -53,7 +53,7 @@ public class UserInput {
            System.out.println("F) Finish Transaction");
 
            System.out.println();
-           System.out.println("Current Money Provided: " + currentMoney.getCurrentMoney());
+           System.out.println("Current Money Provided: " + "$" + currentMoney.getCurrentMoney());
 
            System.out.println();
            System.out.print("Please select an option: ");
