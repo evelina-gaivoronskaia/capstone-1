@@ -17,7 +17,7 @@ public class VendingMachine {
     static Scanner fileScanner;
     public void run() {
         Money money = new Money();
-        File fileName = new File("catering.csv");
+        File fileName = new File("vending.csv");
         List<Item> itemList = new ArrayList<>();
         readFile(fileName, itemList);
         BigDecimal currentMoney = new BigDecimal(0.00);
@@ -31,11 +31,11 @@ public class VendingMachine {
             }
             else if(choice.equals("purchase")) {
                 while(true) {
-                    String purchaseChoice = UserInput.getPurchaseScreenOption(currentMoney);
+                    String purchaseChoice = UserInput.getPurchaseScreenOption(money);
                     if (purchaseChoice.equals("money")) {
                         currentMoney = money.feedMoney(money.getCurrentMoney());
                     }else if(purchaseChoice.equals("select")){
-
+                        UserOutput.purchaseItems(itemList, money);
                     }else if (purchaseChoice.equals("finish")){
                         break;
 

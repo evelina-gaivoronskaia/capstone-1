@@ -43,7 +43,7 @@ public class UserInput {
     }
 
 
-    public static String getPurchaseScreenOption(BigDecimal currentMoney) {
+    public static String getPurchaseScreenOption(Money currentMoney) {
        while(true) {
            System.out.println("What would you like to do?");
            System.out.println();
@@ -53,7 +53,7 @@ public class UserInput {
            System.out.println("F) Finish Transaction");
 
            System.out.println();
-           System.out.println("Current Money Provided: " + currentMoney);
+           System.out.println("Current Money Provided: " + currentMoney.getCurrentMoney());
 
            System.out.println();
            System.out.print("Please select an option: ");

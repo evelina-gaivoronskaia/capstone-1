@@ -42,6 +42,20 @@ public class Item {
         return type;
     }
 
+
+    public void getItemSaying(){
+        if (this.type.equals("Munchy")){
+            System.out.println( "Munchy, Munchy, so Good!");
+        } else if (this.type.equals("Candy")){
+            System.out.println("Sugar, Sugar, so Sweet!");
+        } else if(this.type.equals("Gum")){
+            System.out.println("Chewy, Chewy, Lots O Bubbles!");
+        }else if(this.type.equals("Drink")){
+            System.out.println("Drinky, Drinky, Slurp Slurp!");
+        }
+    }
+
+
     @Override
     public String toString() {
         return "Item{" +
