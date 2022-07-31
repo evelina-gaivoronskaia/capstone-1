@@ -15,3 +15,5 @@
 2022-07-29T16:44:23.097625400| Change Given: $0.30
 2022-07-29T16:44:23.225167700| Change Given: $2.65
 2022-07-29T16:44:23.226044800 | Money Fed: $5 | Current Money: $5
+2022-07-31T13:36:28.673928100 | Money Fed: $5 | Current Money: $5
+2022-07-31T13:51:59.803732600 | Money Fed: $5 | Current Money: $5

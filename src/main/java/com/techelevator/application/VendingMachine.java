@@ -47,7 +47,7 @@ public class VendingMachine {
                 }
             }
             else if(choice.equals("exit")) {
-                // good bye
+
                 System.out.println(money.getChange(money, audit));
                 break;
             }
@@ -61,7 +61,6 @@ public class VendingMachine {
             while(fileScanner.hasNextLine()){
                 String str = fileScanner.nextLine();
                 strArray = str.split(",");
-                //int priceconvert = Integer.parseInt(strArray[2]);
                 BigDecimal price = new BigDecimal(strArray[2]);
                 String name = str.substring(0, 2);
                 itemList.add(new Item(strArray[1], strArray[0], price, strArray[3]));
@@ -74,13 +73,5 @@ public class VendingMachine {
 
     }
 
-//    public BigDecimal feedMoney(BigDecimal currentMoney, BigDecimal moneyFed){
-//        if(moneyFed.equals(1) || moneyFed.equals(5) || moneyFed.equals(10) || moneyFed.equals(20)){
-//            currentMoney = currentMoney.add(moneyFed);
-//            return currentMoney;
-//        } else {
-//            System.out.println("Invalid bill type!");
-//            return currentMoney;
-//        }
-//    }
+
 }

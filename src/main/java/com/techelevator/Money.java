@@ -49,12 +49,8 @@ public class Money {
     public String getChange(Money currentMoney, Logger audit){
         BigDecimal totalMoney = this.currentMoney;
         int dollarBills = totalMoney.intValue();
-//        double remainder = totalMoney.doubleValue() - dollarBills;
         totalMoney = totalMoney.subtract(new BigDecimal(dollarBills));
-//        int remainderNew = (int)(remainder * 100);
-//        int quarterValue = 25;
-//        int dimeValue = 10;
-//        int nickleValue = 5;
+
         int quater= 0 ;
         int dime= 0 ;
         int nickle = 0;
@@ -70,17 +66,7 @@ public class Money {
                 totalMoney = totalMoney.subtract(new BigDecimal("0.05"));
             }
         }
-//        if(!(totalMoney.doubleValue() % 1 == 0)) {
-//             quater = (int)((totalMoney.doubleValue() - dollarBills)  / 0.25);
-//             remainder = totalMoney.doubleValue() - (quater * 0.25);
-//            if(!(remainder % 0.10 == 0)){
-//                 dime =(int)(remainder / 0.10);
-//                 remainder = remainder - (dime * 0.10);
-//                if(!(remainder % 0.05 == 0)){
-//                    nickle = (int)(remainder / 0.05);
-//                }
-//            }
-//        }
+
         audit.write(LocalDateTime.now() + "| Change Given: $" + currentMoney.getCurrentMoney());
         this.currentMoney = new BigDecimal(0.00);
         return "Your change is: \nDollar Bills: " + dollarBills + "\nQuarters: " + quater +
